@@ -69,6 +69,7 @@ class ResultPage extends HookConsumerWidget {
           go = false;
           ref.read(resultProvider.notifier).reset();
           useAnswerState.value = null;
+          context.go("/");
         },
         child: const Icon(Icons.restore),
       ),

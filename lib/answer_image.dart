@@ -56,21 +56,25 @@ class _AnswerImageState extends State<AnswerImage> {
           });
         },
         onDragUpdate: (details) {
-          //print(details.globalPosition.dx);
-          print(details.globalPosition.dy);
-          if ((details.globalPosition.dx > 65.0 &&
-                  details.globalPosition.dx < 170) &&
-              (details.globalPosition.dy > 118.0 &&
-                  details.globalPosition.dy < 233.0)) {
+          //print(details.localPosition.dx);
+          print(details.localPosition.dy);
+          if ((details.localPosition.dx > 112.0 &&
+                  details.localPosition.dx < 177) &&
+              (details.localPosition.dy > 100.0 &&
+                  details.localPosition.dy < 220.0)) {
             if (widget.assetPath.split("/")[1].split(".")[0] == "a5") {
+              print("true");
               go = true;
               useAnswerChosenState.value = widget.assetPath;
               useAnswerState.value = true;
             } else {
+              print("false");
               go = true;
               useAnswerChosenState.value = widget.assetPath;
               useAnswerState.value = false;
             }
+            useAnswerChosenState.notifyListeners();
+            useAnswerState.notifyListeners();
           }
         },
         feedback: Container(
